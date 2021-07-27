@@ -16,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 | });
 */
 
-Auth::routes();
+// Authentication Routes...
+Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [App\Http\Controllers\Dashboard\IndexController::class, 'index']);
+    
+    Route::get('companies', [App\Http\Controllers\Company\IndexController::class, 'index']);
+    Route::prefix('company')->group( function () {
+        //
+    });
+});
