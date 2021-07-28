@@ -35,32 +35,13 @@
                         <tr>
                             <th>No.</th>
                             <th>Logo</th>
-                            <th>Nama</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Website</th>
-                            <th>Opsi</th>
+                            <th width="100px">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($companies as $key => $company)
-                            <tr>
-                                <td>{{$key+1}}</td>
-                                <td>
-                                    <!-- <img class="img-fluid pad" src="{{$company->logo}}" alt="Company Logo">     -->
-                                </td>
-                                <td>{{$company->name}}</td>
-                                <td>{{$company->email}}</td>
-                                <td>{{$company->website}}</td>
-                                <td>
-                                    <a href="{{route('company.show', $company->id)}}" title="Details" class="btn btn-xs btn-default text-teal mx-1 shadow">
-                                        <i class="fa fa-lg fa-fw fa-eye"></i>
-                                    </a>
-                                    <a href="{{route('company.destroy', $company->id)}}" onclick="notificationBeforeDelete(event, this)" title="Delete" class="btn btn-xs btn-default text-danger mx-1 shadow">
-                                        <i class="fa fa-lg fa-fw fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -74,9 +55,6 @@
         @csrf
     </form>
     <script>
-        $('#example2').DataTable({
-            "responsive": true,
-        });
         function notificationBeforeDelete(event, el) {
             event.preventDefault();
             if (confirm('Apakah anda yakin akan menghapus data ? ')) {
@@ -92,7 +70,27 @@
 @stop
 
 @section('js')
-    <script> 
-        console.log('Hi!'); 
+    <script>
+        $(function () {
+            var table = $('#example2').DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('companies') }}",
+                columns: [
+                    {
+                        render: function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {data: 'logo', name: 'logo'},
+                    {data: 'name', name: 'name'},
+                    {data: 'email', name: 'email'},
+                    {data: 'website', name: 'website'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ],
+                order: [[ 0, "desc" ]]
+            });
+        });
     </script>
 @stop

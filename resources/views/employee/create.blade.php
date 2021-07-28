@@ -42,7 +42,7 @@
                         <div class="col-7">
                             <div class="form-group row">
                                 <div class="col-6">
-                                    <label for="first_name">Name *</label>
+                                    <label for="first_name">*Name</label>
                                     <input type="text" id="first_name" placeholder="Nama Depan" name="first_name" value="{{old('first_name')}}" class="form-control @error('first_name') is-invalid @enderror">
                                     @error('first_name') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
@@ -63,7 +63,7 @@
                                 @error('phone') <span class="text-danger">{{$message}}</span> @enderror
                             </div>
                             <div class="form-group">
-                                <label for="company_id">Company</label>
+                                <label for="company_id">*Company</label>
                                 <select id="company_id" name="company_id" class="custom-select @error('company_id') is-invalid @enderror">
                                     <option value="">..Pilih salah satu perusahaan..</option>
                                     

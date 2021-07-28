@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-7">
                             <div class="form-group">
-                                <label for="name">Name *</label>
+                                <label for="name">*Name</label>
                                 <input type="text" id="name" placeholder="Nama Perusahaan" name="name" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror">
                                 @error('name') <span class="text-danger">{{$message}}</span> @enderror
                             </div>

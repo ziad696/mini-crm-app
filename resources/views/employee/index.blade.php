@@ -42,23 +42,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($employees as $key => $employee)
-                            <tr>
-                                <td>{{$key+1}}</td>
-                                <td>{{$employee->first_name.' '.$employee->last_name}}</td>
-                                <td>{{$employee->email}}</td>
-                                <td>{{$employee->phone}}</td>
-                                <td>{{$employee->company->name}}</td>
-                                <td>
-                                    <a href="{{route('employee.show', $employee->id)}}" title="Details" class="btn btn-xs btn-default text-teal mx-1 shadow">
-                                        <i class="fa fa-lg fa-fw fa-eye"></i>
-                                    </a>
-                                    <a href="{{route('employee.destroy', $employee->id)}}" onclick="notificationBeforeDelete(event, this)" title="Delete" class="btn btn-xs btn-default text-danger mx-1 shadow">
-                                        <i class="fa fa-lg fa-fw fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -72,9 +55,6 @@
         @csrf
     </form>
     <script>
-        $('#example2').DataTable({
-            "responsive": true,
-        });
         function notificationBeforeDelete(event, el) {
             event.preventDefault();
             if (confirm('Apakah anda yakin akan menghapus data ? ')) {
@@ -90,7 +70,27 @@
 @stop
 
 @section('js')
-    <script> 
-        console.log('Hi!'); 
+    <script>
+        $(function () {
+            var table = $('#example2').DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('employees') }}",
+                columns: [
+                    {
+                        render: function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {data: 'name', name: 'name'},
+                    {data: 'email', name: 'email'},
+                    {data: 'phone', name: 'phone'},
+                    {data: 'company_name', name: 'company_name'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ],
+                order: [[ 0, "desc" ]]
+            });
+        });
     </script>
 @stop
