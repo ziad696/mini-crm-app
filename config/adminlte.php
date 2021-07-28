@@ -238,14 +238,14 @@ return [
             'icon'        => 'fas fa-tachometer-alt',
         ],
 
-        ['header' => 'CRM'],
+        ['header' => 'MASTER DATA'],
         [
-            'text' => 'Companies',
+            'text' => 'Company',
             'url'  => 'companies',
             'icon' => 'fas fa-building',
         ],
         [
-            'text' => 'Employees',
+            'text' => 'Employee',
             'url'  => 'employees',
             'icon' => 'fas fa-user-friends',
         ],
