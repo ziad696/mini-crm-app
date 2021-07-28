@@ -20,7 +20,7 @@
 @stop
 
 @section('content')
-    <form action="{{route('company.update', $company->id)}}" method="post">
+    <form action="{{route('company.update', $company->id)}}" method="post" enctype="multipart/form-data">
         @method('put')
         @csrf
         <div class="row">
@@ -34,10 +34,17 @@
                     <div class="card-body row">
                         <div class="col-5 text-center d-flex align-items-center justify-content-center">
                             <div class="">
-                                <img class="img-fluid pad" src="{{url('images/company.jpg')}}" alt="Company Logo">
-                                <p class="lead">123 Testing Ave, Testtown, 9876 NA<br>
-                                    Phone: +1 234 56789012
-                                </p>
+                                <img class="img-fluid pad" src="@if ($company->logo != null) {{$company->logo}} @else {{asset('images/404.jpg')}} @endif" alt="Company Logo" width="300" height="300">
+                                
+                                <div class="form-group text-left">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" id="logo" name="logo" class="custom-file-input @error('logo') is-invalid @enderror">
+                                            <label class="custom-file-label" for="logo">Logo (JPG/PNG 100 x 100)</label>
+                                        </div>
+                                    </div>
+                                    @error('logo') <span class="text-danger">{{$message}}</span> @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="col-7">
@@ -71,7 +78,8 @@
 @stop
 
 @section('js')
+    <script src="{{url('vendor/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
     <script> 
-        console.log('Hi!'); 
+        $(() => {bsCustomFileInput.init();})
     </script>
 @stop

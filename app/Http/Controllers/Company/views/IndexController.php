@@ -23,7 +23,7 @@ class IndexController extends Controller
                             $row->logo = asset('images/404.jpg');
                         }
 
-                        $logo = '<img class="img-fluid pad" src="'.$row->logo.'" alt="Company Logo">';
+                        $logo = '<img class="img-fluid pad" src="'.$row->logo.'" alt="Company Logo" width="100" height="100">';
                         return $logo;
                     })
                     ->addColumn('action', function($row){
