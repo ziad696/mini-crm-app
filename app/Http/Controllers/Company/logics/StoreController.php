@@ -19,21 +19,24 @@ class StoreController extends Controller
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         
-        if($request->logo){
-
-            $imageName = time().'.'.$request->file('logo')->extension(); 
-
-            $path = $request->file('logo')->storeAs('public/company/logo', $imageName);
-
-            $url_logo = URL::to('').'/storage/company/logo/'.$imageName;
-        }
-
         $data = Company::create([
             'name' => $request->name,
             'email' => $request->email,
             'website' => $request->website,
-            'logo' => $url_logo ?? null,
         ]);
+
+        if($request->logo){
+
+            $imageName = 'company_logo_'.$data->id.'.'.$request->file('logo')->extension(); 
+
+            $path = $request->file('logo')->storeAs('public/company/logo', $imageName);
+
+            $url_logo = URL::to('').'/storage/company/logo/'.$imageName;
+            
+            $data->update([
+                'logo' => $url_logo,
+            ]);
+        }
         
         return redirect()->route('companies')
             ->with('success_message', 'Berhasil menambah data');

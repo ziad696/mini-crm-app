@@ -28,7 +28,7 @@ class UpdateController extends Controller
         
         if($request->logo){
 
-            $imageName = time().'.'.$request->file('logo')->extension(); 
+            $imageName = 'company_logo_'.$existingData->id.'.'.$request->file('logo')->extension(); 
 
             $path = $request->file('logo')->storeAs('public/company/logo', $imageName);
 
@@ -39,7 +39,7 @@ class UpdateController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'website' => $request->website,
-            'logo' => $url_logo ?? null,
+            'logo' => $url_logo ?? $existingData->logo,
         ]);
         
         return redirect()->route('company.show', $id)
