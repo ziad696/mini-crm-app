@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\FE;
+namespace App\Http\Controllers\Dashboard\views;
 
 use App\Http\Controllers\Controller;
 

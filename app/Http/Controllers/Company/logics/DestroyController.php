@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Company\BE;
+namespace App\Http\Controllers\Company\logics;
 
 use Illuminate\Http\Request;
 

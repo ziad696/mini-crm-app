@@ -22,35 +22,35 @@ Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login']
 Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [App\Http\Controllers\Dashboard\FE\IndexController::class, 'index']);
+    Route::get('/', [App\Http\Controllers\Dashboard\views\IndexController::class, 'index']);
     
     // Company
-    Route::get('companies', [App\Http\Controllers\Company\FE\IndexController::class, 'index'])->name('companies');
+    Route::get('companies', [App\Http\Controllers\Company\views\IndexController::class, 'index'])->name('companies');
     Route::prefix('company')->group( function () {
             // Create
-            Route::get('/create', [App\Http\Controllers\Company\FE\CreateController::class, 'create'])->name('company.create');
-            Route::post('/store', [App\Http\Controllers\Company\BE\StoreController::class, 'store'])->name('company.store');
+            Route::get('/create', [App\Http\Controllers\Company\views\CreateController::class, 'create'])->name('company.create');
+            Route::post('/store', [App\Http\Controllers\Company\logics\StoreController::class, 'store'])->name('company.store');
 
             //Update
-            Route::get('/{id}', [App\Http\Controllers\Company\FE\ShowController::class, 'show'])->name('company.show');
-            Route::put('/{id}', [App\Http\Controllers\Company\BE\UpdateController::class, 'update'])->name('company.update');
+            Route::get('/{id}', [App\Http\Controllers\Company\views\ShowController::class, 'show'])->name('company.show');
+            Route::put('/{id}', [App\Http\Controllers\Company\logics\UpdateController::class, 'update'])->name('company.update');
             
             //Delete
-            Route::delete('/{id}', [App\Http\Controllers\Company\BE\DestroyController::class, 'destroy'])->name('company.destroy');
+            Route::delete('/{id}', [App\Http\Controllers\Company\logics\DestroyController::class, 'destroy'])->name('company.destroy');
     });
     
     // Employee
-    Route::get('employees', [App\Http\Controllers\Employee\FE\IndexController::class, 'index'])->name('employees');
+    Route::get('employees', [App\Http\Controllers\Employee\views\IndexController::class, 'index'])->name('employees');
     Route::prefix('employee')->group( function () {
             // Create
-            Route::get('/create', [App\Http\Controllers\Employee\FE\CreateController::class, 'create'])->name('employee.create');
-            Route::post('/store', [App\Http\Controllers\Employee\BE\StoreController::class, 'store'])->name('employee.store');
+            Route::get('/create', [App\Http\Controllers\Employee\views\CreateController::class, 'create'])->name('employee.create');
+            Route::post('/store', [App\Http\Controllers\Employee\logics\StoreController::class, 'store'])->name('employee.store');
 
             //Update
-            Route::get('/{id}', [App\Http\Controllers\Employee\FE\ShowController::class, 'show'])->name('employee.show');
-            Route::put('/{id}', [App\Http\Controllers\Employee\BE\UpdateController::class, 'update'])->name('employee.update');
+            Route::get('/{id}', [App\Http\Controllers\Employee\views\ShowController::class, 'show'])->name('employee.show');
+            Route::put('/{id}', [App\Http\Controllers\Employee\logics\UpdateController::class, 'update'])->name('employee.update');
             
             //Delete
-            Route::delete('/{id}', [App\Http\Controllers\Employee\BE\DestroyController::class, 'destroy'])->name('employee.destroy');
+            Route::delete('/{id}', [App\Http\Controllers\Employee\logics\DestroyController::class, 'destroy'])->name('employee.destroy');
     });
 });
