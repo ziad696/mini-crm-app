@@ -37,6 +37,16 @@ class StoreController extends Controller
                 'logo' => $url_logo,
             ]);
         }
+
+        if($request->email){
+            $company = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'website' => $request->website,
+            ];
+    
+            \Mail::to($request->email)->send(new \App\Mail\NewCompanyEnteredMail($company));
+        }
         
         return redirect()->route('companies')
             ->with('success_message', 'Berhasil menambah data');

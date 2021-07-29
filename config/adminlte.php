@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'CRM APP',
+    'title' => 'MINI CRM APP',
     'title_prefix' => '',
     'title_postfix' => '',
 
