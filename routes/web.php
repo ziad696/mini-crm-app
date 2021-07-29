@@ -21,6 +21,9 @@ Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLogi
 Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
+// Localization
+Route::get('lang/{locale}', [App\Http\Controllers\Localization\LocalizationController::class, 'index']);
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\Dashboard\views\IndexController::class, 'index']);
     

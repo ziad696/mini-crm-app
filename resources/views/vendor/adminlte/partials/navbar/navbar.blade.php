@@ -22,6 +22,26 @@
         {{-- Configured right links --}}
         @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-right'), 'item')
 
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
+                @switch(session()->get('locale'))
+                    @case('id')
+                        <i class="flag-icon flag-icon-id "></i>
+                    @break
+                    @default
+                        <i class="flag-icon flag-icon-us "></i>
+                @endswitch
+            </a>
+            <ul class="dropdown-menu border-0 shadow">
+                <li>
+                    <a class="dropdown-item" href="lang/en"><i class="flag-icon flag-icon-us "></i> English</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="lang/id"><i class="flag-icon flag-icon-id "></i> Indonesia</a>
+                </li>
+            </ul>
+        </li>
+
         {{-- User menu link --}}
         @if(Auth::user())
             @if(config('adminlte.usermenu_enabled'))
