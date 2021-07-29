@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Authentication Routes...
-Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
@@ -25,7 +25,7 @@ Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout
 Route::get('lang/{locale}', [App\Http\Controllers\Localization\LocalizationController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [App\Http\Controllers\Dashboard\views\IndexController::class, 'index']);
+    Route::get('dashboard', [App\Http\Controllers\Dashboard\views\IndexController::class, 'index']);
     
     // Company
     Route::get('companies', [App\Http\Controllers\Company\views\IndexController::class, 'index'])->name('companies');
