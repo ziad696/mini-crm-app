@@ -6,12 +6,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Company</h1>
+                <h1>{{ __('adminlte::menu.companies') }}</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Master Data</a></li>
-                    <li class="breadcrumb-item active">Company</li>
+                    <li class="breadcrumb-item active">{{ __('adminlte::menu.companies') }}</li>
                 </ol>
             </div>
         </div>
@@ -25,7 +25,7 @@
                 <div class="card-header">
                     <h3 class="card-title">
                         <a href="{{route('company.create')}}" type="button" class="btn btn-outline-primary btn-block ">
-                            <i class="fas fa-plus-square"></i> Add
+                            <i class="fas fa-plus-square"></i> {{ __('adminlte::adminlte.add') }}
                         </a>
                     </h3>
                 </div>
@@ -35,10 +35,10 @@
                         <tr>
                             <th>No.</th>
                             <th>Logo</th>
-                            <th>Name</th>
-                            <th>Email</th>
+                            <th>{{ __('adminlte::adminlte.name') }}</th>
+                            <th>E-mail</th>
                             <th>Website</th>
-                            <th width="100px">Action</th>
+                            <th width="100px">{{ __('adminlte::adminlte.action') }}</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -34,10 +34,10 @@
             </a>
             <ul class="dropdown-menu border-0 shadow">
                 <li>
-                    <a class="dropdown-item" href="lang/en"><i class="flag-icon flag-icon-us "></i> English</a>
+                    <a class="dropdown-item" href="{{ URL::to('/') }}/lang/en"><i class="flag-icon flag-icon-us "></i> English</a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="lang/id"><i class="flag-icon flag-icon-id "></i> Indonesia</a>
+                    <a class="dropdown-item" href="{{ URL::to('/') }}/lang/id"><i class="flag-icon flag-icon-id "></i> Indonesia</a>
                 </li>
             </ul>
         </li>

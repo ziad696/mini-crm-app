@@ -6,13 +6,13 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Company</h1>
+                <h1>{{ __('adminlte::menu.companies') }}</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Master Data</a></li>
-                    <li class="breadcrumb-item"><a href="{{route('companies')}}">Company</a></li>
-                    <li class="breadcrumb-item active">Create</li>
+                    <li class="breadcrumb-item"><a href="{{route('companies')}}">{{ __('adminlte::menu.companies') }}</a></li>
+                    <li class="breadcrumb-item active">{{ __('adminlte::adminlte.add') }}</li>
                 </ol>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 <div class="card card-primary card-outline">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <i class="fas fa-edit"></i> Create Form
+                            <i class="fas fa-edit"></i> Form
                         </h3>
                     </div>
                     <div class="card-body row">
@@ -49,18 +49,18 @@
                         </div>
                         <div class="col-7">
                             <div class="form-group">
-                                <label for="name">*Name</label>
-                                <input type="text" id="name" placeholder="Nama Perusahaan" name="name" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror">
+                                <label for="name">*{{ __('adminlte::adminlte.name') }}</label>
+                                <input type="text" id="name" placeholder="{{ __('adminlte::adminlte.company_name') }}" name="name" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror">
                                 @error('name') <span class="text-danger">{{$message}}</span> @enderror
                             </div>
                             <div class="form-group">
                                 <label for="email">E-Mail</label>
-                                <input type="text" id="email" placeholder="E-mail Perusahaan" name="email" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror">
+                                <input type="text" id="email" placeholder="{{ __('adminlte::adminlte.company_email') }}" name="email" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror">
                                 @error('email') <span class="text-danger">{{$message}}</span> @enderror
                             </div>
                             <div class="form-group">
                                 <label for="website">Website</label>
-                                <input type="text" id="website" placeholder="Website Perusahaan" name="website" value="{{old('website')}}" class="form-control @error('website') is-invalid @enderror">
+                                <input type="text" id="website" placeholder="{{ __('adminlte::adminlte.company_website') }}" name="website" value="{{old('website')}}" class="form-control @error('website') is-invalid @enderror">
                                 @error('website') <span class="text-danger">{{$message}}</span> @enderror
                             </div>
                                 <div class="form-group">
