@@ -240,12 +240,12 @@ return [
 
         ['header' => 'MASTER DATA'],
         [
-            'text' => 'Company',
+            'text' => 'companies',
             'url'  => 'companies',
             'icon' => 'fas fa-building',
         ],
         [
-            'text' => 'Employee',
+            'text' => 'employees',
             'url'  => 'employees',
             'icon' => 'fas fa-user-friends',
         ],

@@ -14,6 +14,6 @@ return [
     'level_three'                   => 'Level 3',
     'labels'                        => 'LABEL',
     'important'                     => 'Penting',
-    'warning'                       => 'Peringatan',
-    'information'                   => 'Informasi',
+    'companies'                     => 'Perusahaan',
+    'employees'                     => 'Karyawan',
 ];
