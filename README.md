@@ -59,7 +59,7 @@ php artisan test
 
 ## Usage example
 
-CRUD Company, CRUD Employee, SSR DataTables, Mail, Multi Language Project
+CRUD Company, CRUD Employee, Authentication, SSR DataTables, Mail, File Management, Multi Language Project, Basic PHPunit Testing
 
 ## Contributing
 
